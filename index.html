@@ -32,71 +32,67 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            background: linear-gradient(rgba(250, 248, 245, 0.88), rgba(250, 248, 245, 0.88)), 
-                        url('https://i.ibb.co/M5xGYGkF/Whats-App-Image-2026-09-06-at-16-30-50.jpg') center/cover fixed no-repeat;
+            /* ARKA PLAN FOTOĞRAFI */
+            background: linear-gradient(rgba(250, 248, 245, 0.90), rgba(250, 248, 245, 0.90)), 
+                        url('https://i.ibb.co/zH5b4X5j/foto.jpg') center/cover fixed no-repeat;
         }
 
-        /* DİK / PORTRE KAPAK TASARIMI */
+        /* YATAY KAPAK TASARIMI (HERO) */
         .hero {
-            height: 100vh;
-            min-height: -webkit-fill-available;
+            width: 100%;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 60px 20px;
             position: relative;
             color: #ffffff;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%), 
-                        url('https://i.ibb.co/M5xGYGkF/Whats-App-Image-2026-09-06-at-16-30-50.jpg') center/cover no-repeat;
+            /* YATAY FOTOĞRAFA UYGUN ODAKLAMA VE SİNEMATİK FİLTRE */
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                        url('https://i.ibb.co/zH5b4X5j/foto.jpg') center center / cover no-repeat;
+            border-bottom: 3px solid var(--rose-gold);
         }
 
         .hero-border {
             position: absolute;
-            top: 15px; right: 15px; bottom: 15px; left: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            top: 20px; right: 20px; bottom: 20px; left: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             pointer-events: none;
-        }
-
-        .hero-content-top {
-            margin-top: auto;
-            margin-bottom: 20px;
-        }
-
-        .hero-content-bottom {
-            margin-bottom: auto;
         }
 
         .hero-subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            letter-spacing: 4px;
+            font-size: 1.3rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: #f0e6d2;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
         }
 
         .hero-title {
             font-family: 'Alex Brush', cursive;
-            font-size: 4.8rem;
+            font-size: 5.5rem;
             color: #ffffff;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            margin: 10px 0;
             line-height: 1.1;
         }
 
         .hero-date {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 600;
             letter-spacing: 3px;
             color: #ffffff;
-            margin-top: 10px;
+            margin-top: 15px;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         }
 
         .divider {
-            width: 80px;
+            width: 100px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
             margin: 20px auto;
@@ -213,6 +209,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+            margin-top: 25px;
         }
 
         .rsvp-form {
@@ -265,7 +262,7 @@
         }
 
         @media (max-width: 600px) {
-            .hero-title { font-size: 3.6rem; }
+            .hero-title { font-size: 3.8rem; }
             .section-title { font-size: 2.8rem; }
             .timer-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .container { padding: 50px 20px; }
@@ -275,20 +272,16 @@
 </head>
 <body>
 
-    <!-- DİK PORTRE KAPAK SAYFASI -->
+    <!-- YATAY KAPAK FOTOĞRAF ALANI -->
     <section class="hero">
         <div class="hero-border"></div>
-        <div class="hero-content-top">
-            <p class="hero-subtitle">Bir Ömür Boyu Birlikte</p>
-            <h1 class="hero-title">Zehra &amp; Ahmet</h1>
-            <div class="divider"></div>
-            <p class="hero-date">11 EKİM 2026</p>
-        </div>
-        <div class="hero-content-bottom">
-            <a href="#davet" class="btn">
-                <i class="fa-regular fa-envelope-open"></i> Davetiyeyi Aç
-            </a>
-        </div>
+        <p class="hero-subtitle">Bir Ömür Boyu Birlikte</p>
+        <h1 class="hero-title">Zehra &amp; Ahmet</h1>
+        <div class="divider"></div>
+        <p class="hero-date">11 EKİM 2026</p>
+        <a href="#davet" class="btn">
+            <i class="fa-regular fa-envelope-open"></i> Davetiyeyi Aç
+        </a>
     </section>
 
     <!-- Davet Metni -->
