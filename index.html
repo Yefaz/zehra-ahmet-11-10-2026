@@ -4,77 +4,421 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zehra & Ahmet - Düğün Davetiyesi</title>
+    
+    <!-- Tipografi ve Fontlar -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: #333; background-color: #fcfbf9; text-align: center; }
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #f4efea; padding: 20px; }
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #8a6d3b; margin: 15px 0; }
-        .subtitle { font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; color: #666; }
-        .date { font-size: 1.4rem; font-weight: 600; margin-bottom: 25px; }
-        .container { max-width: 600px; margin: 40px auto; padding: 0 20px; }
-        h2 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #8a6d3b; margin-bottom: 15px; }
-        .btn { display: inline-block; padding: 12px 28px; background-color: #8a6d3b; color: #fff; text-decoration: none; border-radius: 25px; margin-top: 15px; }
-        .countdown { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-        .time-box { background: #fff; padding: 12px; border-radius: 8px; min-width: 65px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .time-box span { display: block; }
-        .num { font-size: 1.5rem; font-weight: bold; color: #8a6d3b; }
-        .label { font-size: 0.75rem; color: #777; }
-        .card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 20px; }
-        footer { padding: 30px; background: #f4efea; margin-top: 50px; }
+        :root {
+            --primary: #b8860b;
+            --primary-light: #dfba6d;
+            --rose-gold: #c5a059;
+            --bg-cream: #faf8f5;
+            --bg-card: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+            --border: #e8e2d8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero / Karşılama Alanı */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f4eee5 100%);
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20px; right: 20px; bottom: 20px; left: 20px;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            pointer-events: none;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 5rem;
+            color: var(--primary);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            margin: 10px 0;
+            line-height: 1.2;
+        }
+
+        .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+            margin-top: 15px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
+            margin: 25px auto;
+        }
+
+        /* Konteyner & Kart Düzeni */
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Geri Sayım Kutusu */
+        .timer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 30px auto 0;
+        }
+
+        .timer-box {
+            background: var(--bg-card);
+            padding: 20px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .timer-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+        }
+
+        .timer-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            display: block;
+        }
+
+        /* Etkinlik Detay Kartları */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--rose-gold);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        /* Buton Tasarımları */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--rose-gold) 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.25);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Katılım Bildirim (RSVP) Formu */
+        .rsvp-form {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fdfdfd;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: #f4eee5;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .hero-title { font-size: 3.8rem; }
+            .section-title { font-size: 2.8rem; }
+            .timer-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .container { padding: 50px 20px; }
+            .rsvp-form { padding: 25px; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <p class="subtitle">Bir Ömür Boyu Birlikte</p>
-        <h1>Zehra &amp; Ahmet</h1>
-        <p class="date">11 Ekim 2026</p>
-        <a href="#davet" class="btn">Davetime Hoş Geldiniz</a>
-    </header>
-
-    <section id="davet" class="container">
-        <h2>Biz Evleniyoruz!</h2>
-        <p>Hayatlarımızı birleştireceğimiz bu özel günde siz değerli misafirlerimizi de aramızda görmekten mutluluk duyarız.</p>
+    <!-- Karşılama Alanı -->
+    <section class="hero">
+        <p class="hero-subtitle">Sevginin Ve Birlikteliğin Adımı</p>
+        <h1 class="hero-title">Zehra &amp; Ahmet</h1>
+        <div class="divider"></div>
+        <p class="hero-date">11 EKİM 2026</p>
+        <a href="#davet" class="btn" style="margin-top: 35px;">
+            <i class="fa-regular fa-envelope-open"></i> Davetiyeyi Aç
+        </a>
     </section>
 
-    <section class="container">
-        <h2>Büyük Güne Kalan Zaman</h2>
-        <div class="countdown">
-            <div class="time-box"><span id="days" class="num">00</span><span class="label">Gün</span></div>
-            <div class="time-box"><span id="hours" class="num">00</span><span class="label">Saat</span></div>
-            <div class="time-box"><span id="minutes" class="num">00</span><span class="label">Dakika</span></div>
-            <div class="time-box"><span id="seconds" class="num">00</span><span class="label">Saniye</span></div>
+    <!-- Davet Metni -->
+    <section id="davet" class="container" style="text-align: center;">
+        <h2 class="section-title">Biz Evleniyoruz</h2>
+        <p class="section-subtitle">"Hayatımızın en özel gününü sizlerle paylaşmaktan mutluluk duyarız."</p>
+        <p style="max-width: 650px; margin: 0 auto; color: var(--text-muted); font-size: 1.05rem;">
+            Ortak bir geleceğe adım attığımız bu anlamlı günde, sevgimizi ve mutluluğumuzu çoğaltmak için siz değerli dostlarımızı aramızda görmeyi diliyoruz.
+        </p>
+    </section>
+
+    <!-- Geri Sayım Sayacı -->
+    <section style="background: #ffffff; padding: 60px 0; border-y: 1px solid var(--border);">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <h2 class="section-title">Büyük Güne Kalan Zaman</h2>
+            <div class="divider"></div>
+            <div class="timer-container">
+                <div class="timer-box">
+                    <span id="days" class="timer-number">00</span>
+                    <span class="timer-label">Gün</span>
+                </div>
+                <div class="timer-box">
+                    <span id="hours" class="timer-number">00</span>
+                    <span class="timer-label">Saat</span>
+                </div>
+                <div class="timer-box">
+                    <span id="minutes" class="timer-number">00</span>
+                    <span class="timer-label">Dakika</span>
+                </div>
+                <div class="timer-box">
+                    <span id="seconds" class="timer-number">00</span>
+                    <span class="timer-label">Saniye</span>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Etkinlik & Konum Bilgileri -->
     <section class="container">
-        <h2>Düğün Bilgileri</h2>
-        <div class="card">
-            <h3>Elite Wedding Hall</h3>
-            <p style="margin-top:10px;"><strong>Tarih:</strong> 11 Ekim 2026</p>
-            <p><strong>Adres:</strong> Karşıyaka, Haymana Yolu Blv. No:182, 06830 Gölbaşı/Ankara</p>
-            <a href="https://maps.google.com" target="_blank" class="btn">Yol Tarifi Al</a>
+        <h2 class="section-title">Düğün Detayları</h2>
+        <div class="divider"></div>
+        
+        <div class="details-grid">
+            <!-- Program / Saat Kartı -->
+            <div class="card">
+                <i class="fa-regular fa-clock card-icon"></i>
+                <h3>Etkinlik Programı</h3>
+                <p><strong>Tarih:</strong> 11 Ekim 2026 Pazar</p>
+                <p><strong>Nikah &amp; Kokteyl:</strong> 18:30</p>
+                <p><strong>Düğün Eğlencesi:</strong> 19:30 - 23:00</p>
+            </div>
+
+            <!-- Konum Kartı -->
+            <div class="card">
+                <i class="fa-solid fa-location-dot card-icon"></i>
+                <h3>Mekan &amp; Adres</h3>
+                <p><strong>Elite Wedding Hall</strong></p>
+                <p>Karşıyaka, Haymana Yolu Blv. No:182</p>
+                <p>Gölbaşı / Ankara</p>
+                <a href="https://maps.google.com/?q=Elite+Wedding+Hall+Gölbaşı" target="_blank" class="btn">
+                    <i class="fa-solid fa-map-location-dot"></i> Yol Tarifi Al
+                </a>
+            </div>
         </div>
     </section>
 
+    <!-- Katılım Durumu Formu (RSVP) -->
+    <section style="background: #ffffff; padding: 80px 0; border-top: 1px solid var(--border);">
+        <div class="container" style="padding-top:0; padding-bottom:0;">
+            <h2 class="section-title">Katılım Durumu</h2>
+            <p class="section-subtitle">Lütfen 1 Ekim 2026 tarihine kadar katılım durumunuzu bildiriniz.</p>
+            
+            <form class="rsvp-form" onsubmit="event.preventDefault(); alert('Katılım durumunuz iletildi. Teşekkür ederiz!');">
+                <div class="form-group">
+                    <label>Adınız Soyadınız</label>
+                    <input type="text" class="form-control" placeholder="Örn: Ahmet Yılmaz" required>
+                </div>
+                <div class="form-group">
+                    <label>Katılım Durumunuz</label>
+                    <select class="form-control" required>
+                        <option value="">Lütfen Seçiniz</option>
+                        <option value="evet">Katılıyorum</option>
+                        <option value="hayir">Katılamıyorum</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Kişi Sayısı</label>
+                    <input type="number" class="form-control" min="1" max="5" value="1">
+                </div>
+                <button type="submit" class="btn" style="width: 100%; justify-content: center;">
+                    <i class="fa-regular fa-paper-plane"></i> Yanıtı Gönder
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <h2 style="font-size:2rem;">Z &amp; A</h2>
-        <p>Teşekkür Ederiz</p>
+        <h2 class="footer-title">Zehra &amp; Ahmet</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Bu mutlu günümüzde yanımızda olacağınız için teşekkür ederiz.</p>
     </footer>
 
+    <!-- Geri Sayım Scripti -->
     <script>
-        const targetDate = new Date("October 11, 2026 00:00:00").getTime();
+        const targetDate = new Date("October 11, 2026 18:30:00").getTime();
+
         setInterval(() => {
             const now = new Date().getTime();
             const difference = targetDate - now;
+
             if (difference > 0) {
-                document.getElementById("days").innerText = Math.floor(difference / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                document.getElementById("hours").innerText = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById("minutes").innerText = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById("seconds").innerText = Math.floor((difference % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
             }
         }, 1000);
     </script>
