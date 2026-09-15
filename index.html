@@ -225,16 +225,39 @@
             box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
         }
 
-        .rsvp-box {
+        .rsvp-form {
             background: var(--bg-card);
-            padding: 40px 25px;
+            padding: 35px 25px;
             border-radius: 15px;
             border: 1px solid var(--border);
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             max-width: 550px;
             margin: 0 auto;
-            text-align: center;
             backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fdfdfd;
         }
 
         footer {
@@ -337,19 +360,34 @@
         </div>
     </section>
 
-    <!-- KATILIM DURUMU (ÖZEL GOOGLE FORM BAĞLANTISI) -->
+    <!-- ARKA PLAN GOOGLE FORM GÖNDERİMİ -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {alert('Katılım durumunuz iletildi. Teşekkür ederiz!');}"></iframe>
+    
     <section class="container" style="padding-top:0;">
         <h2 class="section-title">Katılım Durumu</h2>
         <p class="section-subtitle">Lütfen katılım durumunuzu bildiriniz.</p>
         
-        <div class="rsvp-box">
-            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 20px;">
-                Düğünümüze katılım durumunuzu ve kişi sayınızı bize iletmek için aşağıdaki butona tıklayabilirsiniz.
-            </p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfT1TM3mSJoDoGl4RMcDaISbSm8eZE8k-6JN1b1w0SkO7Jb9Q/viewform" target="_blank" class="btn" style="padding: 16px 36px; font-size: 0.9rem;">
-                <i class="fa-regular fa-pen-to-square"></i> Katılım Formunu Doldur
-            </a>
-        </div>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfT1TM3mSJoDoGl4RMcDaISbSm8eZE8k-6JN1b1w0SkO7Jb9Q/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="rsvp-form">
+            <div class="form-group">
+                <label>Adınız Soyadınız</label>
+                <input type="text" name="entry.1981503524" class="form-control" placeholder="Örn: Ahmet Yılmaz" required>
+            </div>
+            <div class="form-group">
+                <label>Katılım Durumunuz</label>
+                <select name="entry.172903700" class="form-control" required>
+                    <option value="">Lütfen Seçiniz</option>
+                    <option value="KATILIYORUMM ❤️">KATILIYORUMM ❤️</option>
+                    <option value="MALESEF KATILAMIYORUM :(">MALESEF KATILAMIYORUM :(</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Kişi Sayısı</label>
+                <input type="number" name="entry.825487636" class="form-control" min="1" max="5" value="1">
+            </div>
+            <button type="submit" class="btn" style="width: 100%; justify-content: center; margin-top:10px;">
+                <i class="fa-regular fa-paper-plane"></i> Yanıtı Gönder
+            </button>
+        </form>
     </section>
 
     <footer>
@@ -358,6 +396,8 @@
     </footer>
 
     <script>
+        var submitted = false;
+
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
