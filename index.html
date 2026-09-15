@@ -32,26 +32,33 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            /* ARKA PLAN FOTOĞRAFI */
-            background: linear-gradient(rgba(250, 248, 245, 0.90), rgba(250, 248, 245, 0.90)), 
-                        url('https://i.ibb.co/zH5b4X5j/foto.jpg') center/cover fixed no-repeat;
+            background-color: #faf8f5;
         }
 
-        /* YATAY KAPAK TASARIMI (HERO) */
+        /* YÜKSEK ÇÖZÜNÜRLÜK ODAKLI KAPAK */
         .hero {
             width: 100%;
-            min-height: 80vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             position: relative;
             color: #ffffff;
-            /* YATAY FOTOĞRAFA UYGUN ODAKLAMA VE SİNEMATİK FİLTRE */
-            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-                        url('https://i.ibb.co/zH5b4X5j/foto.jpg') center center / cover no-repeat;
+            
+            /* Fotoğraf Netleştirme ve Yakınlaşmayı Engelleme Kodları */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                              url('https://i.ibb.co/zH5b4X5j/foto.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            /* Tarayıcı Görsel Netleştirme */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            
             border-bottom: 3px solid var(--rose-gold);
         }
 
@@ -130,13 +137,12 @@
         }
 
         .timer-box {
-            background: var(--bg-card);
+            background: #ffffff;
             padding: 20px 10px;
             border-radius: 12px;
             border: 1px solid var(--border);
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
 
         .timer-number {
@@ -165,13 +171,12 @@
         }
 
         .card {
-            background: var(--bg-card);
+            background: #ffffff;
             padding: 40px 30px;
             border-radius: 15px;
             border: 1px solid var(--border);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
 
         .card-icon {
@@ -213,14 +218,13 @@
         }
 
         .rsvp-form {
-            background: var(--bg-card);
+            background: #ffffff;
             padding: 40px;
             border-radius: 15px;
             border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
             max-width: 550px;
             margin: 0 auto;
-            backdrop-filter: blur(5px);
         }
 
         .form-group {
@@ -244,7 +248,7 @@
             border-radius: 8px;
             font-family: inherit;
             font-size: 0.95rem;
-            background: rgba(255,255,255,0.9);
+            background: #fdfdfd;
         }
 
         footer {
@@ -272,7 +276,6 @@
 </head>
 <body>
 
-    <!-- YATAY KAPAK FOTOĞRAF ALANI -->
     <section class="hero">
         <div class="hero-border"></div>
         <p class="hero-subtitle">Bir Ömür Boyu Birlikte</p>
@@ -284,7 +287,6 @@
         </a>
     </section>
 
-    <!-- Davet Metni -->
     <section id="davet" class="container" style="text-align: center;">
         <h2 class="section-title">Biz Evleniyoruz</h2>
         <p class="section-subtitle">"Hayatımızın en özel gününü sizlerle paylaşmaktan mutluluk duyarız."</p>
@@ -293,7 +295,6 @@
         </p>
     </section>
 
-    <!-- Geri Sayım Sayacı -->
     <section class="container" style="padding-top: 0; padding-bottom: 60px;">
         <h2 class="section-title">Büyük Güne Kalan Zaman</h2>
         <div class="divider"></div>
@@ -317,7 +318,6 @@
         </div>
     </section>
 
-    <!-- Etkinlik Detayları -->
     <section class="container" style="padding-top: 0;">
         <h2 class="section-title">Düğün Detayları</h2>
         <div class="divider"></div>
@@ -344,7 +344,6 @@
         </div>
     </section>
 
-    <!-- Katılım Formu (RSVP) -->
     <section class="container" style="padding-top:0;">
         <h2 class="section-title">Katılım Durumu</h2>
         <p class="section-subtitle">Lütfen katılım durumunuzu bildiriniz.</p>
