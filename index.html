@@ -14,7 +14,7 @@
         :root {
             --primary: #b8860b;
             --rose-gold: #c5a059;
-            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-card: rgba(255, 255, 255, 0.93);
             --text-dark: #2c2c2c;
             --text-muted: #555555;
             --border: #e8e2d8;
@@ -34,10 +34,13 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: #faf8f5;
+            
+            /* 2. SAYFA VE İÇERİKLERİN ARKA PLANI (2. FOTOĞRAF) */
+            background: linear-gradient(rgba(250, 248, 245, 0.88), rgba(250, 248, 245, 0.88)), 
+                        url('ikinci-sayfa.jpeg') center center / cover fixed no-repeat;
         }
 
-        /* MOBİL ODAKLI VE NET KAPAK ALANI */
+        /* 1. GİRİŞ KAPAĞI (1. FOTOĞRAF) */
         .hero {
             width: 100%;
             min-height: 100vh;
@@ -51,16 +54,13 @@
             position: relative;
             color: #ffffff;
             
-            /* Mobil Ekran Görsel Çözünürlük İyileştirmesi */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)), 
-                        url('https://i.ibb.co/zH5b4X5j/foto.jpg');
-            background-position: center 30%;
+            /* GITHUB'A YÜKLENEN 1. KAPAK FOTOĞRAFI */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.30), rgba(0,0,0,0.50)), 
+                        url('giris.jpeg');
+            background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
             
-            /* Mobil Netleştirme Kuralları */
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
             border-bottom: 3px solid var(--rose-gold);
         }
 
@@ -139,12 +139,13 @@
         }
 
         .timer-box {
-            background: #ffffff;
+            background: var(--bg-card);
             padding: 15px 8px;
             border-radius: 12px;
             border: 1px solid var(--border);
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            backdrop-filter: blur(5px);
         }
 
         .timer-number {
@@ -173,12 +174,13 @@
         }
 
         .card {
-            background: #ffffff;
+            background: var(--bg-card);
             padding: 35px 25px;
             border-radius: 15px;
             border: 1px solid var(--border);
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            backdrop-filter: blur(5px);
         }
 
         .card-icon {
@@ -220,13 +222,14 @@
         }
 
         .rsvp-form {
-            background: #ffffff;
+            background: var(--bg-card);
             padding: 35px 25px;
             border-radius: 15px;
             border: 1px solid var(--border);
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             max-width: 550px;
             margin: 0 auto;
+            backdrop-filter: blur(5px);
         }
 
         .form-group {
@@ -267,13 +270,11 @@
             margin-bottom: 8px;
         }
 
-        /* MOBİL ÖZEL UYARLAMALAR */
         @media (max-width: 600px) {
             .hero-title { font-size: 3.8rem; }
             .section-title { font-size: 2.6rem; }
             .timer-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .container { padding: 45px 18px; }
-            .hero { background-position: center center; }
         }
     </style>
 </head>
@@ -384,15 +385,12 @@
         <p style="color: var(--text-muted); font-size: 0.9rem;">Bu mutlu günümüzde yanımızda olacağınız için teşekkür ederiz.</p>
     </footer>
 
-    <!-- SAYFAYI EN ÜSTTE BAŞLATMA VE SAYAÇ SCRİPTİ -->
     <script>
-        // Sayfa açıldığında otomatik olarak en üst kapağa (0, 0) kaydırır
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
         window.scrollTo(0, 0);
 
-        // Geri Sayım Mantığı
         const targetDate = new Date("October 11, 2026 18:30:00").getTime();
 
         setInterval(() => {
